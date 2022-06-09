@@ -1,9 +1,8 @@
 package com.android.aop.part2.locationsearch
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.android.aop.part2.locationsearch.databinding.ActivityMainBinding
 import com.android.aop.part2.locationsearch.model.entity.LocationLatLngEntity
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        adapter = setSearchResultList(dataList) {
+        adapter.setSearchResultList(dataList) {
 
             Toast.makeText(this, "빌딩이름: ${it.name} 주소: ${it.fullAdress}", Toast.LENGTH_LONG).show()
 

@@ -1,5 +1,6 @@
 package com.android.aop.part2.locationsearch
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
+
+    companion object{
+        val SEARCH_RESULT_EXTRA_KEY =  "SEARCH_RESULT_EXTRA_KEY"
+    }
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -69,6 +74,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         adapter.setSearchResultList(dataList) {
+
+            startActivity(
+                Intent(this, MapActivity::class.java).apply {
+                    putExtra(SEARCH_RESULT_EXTRA_KEY, it)
+                }
+            )
 
             Toast.makeText(
                 this,

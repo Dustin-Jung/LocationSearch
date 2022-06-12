@@ -136,5 +136,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                     (poi.firstNo?.trim() ?: "") + " " +
                     poi.secondNo?.trim()
         }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job.cancel()
+    }
 }
 
